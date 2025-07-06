@@ -21,6 +21,26 @@ app.add_middleware(
 
 # In-memory session storage
 sessions = {}
+@app.get("/")
+async def welcome():
+    """Welcome message for root endpoint"""
+    return JSONResponse(
+        status_code=200,
+        content={
+            "message": "👋 Welcome to the Meeting Transcript Chatbot API!",
+            "endpoints": {
+                "/upload": "Upload meeting transcript",
+                "/chat": "Chat with the meeting AI bot",
+                "/session/{session_id}": "Get session info",
+                "/session/{session_id}/history": "Get session chat history",
+                "/delete/{session_id}": "Delete a session",
+                "/sessions": "List all active sessions",
+                "/health": "Health check",
+                "/clear-all": "Clear all sessions"
+            }
+        }
+    )
+
 
 @app.post("/upload")
 async def upload_transcript(request: Request):
