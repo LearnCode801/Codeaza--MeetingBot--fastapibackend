@@ -294,4 +294,4 @@ if __name__ == '__main__':
         print("WARNING: GOOGLE_API_KEY environment variable not set!")
         print("Please set your Google API key: export GOOGLE_API_KEY='your_api_key_here'")
     
-    uvicorn.run(app, host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
